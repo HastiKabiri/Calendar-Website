@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="stage">
+  <div class="book" id="book">
+
+    <!-- CALENDAR VIEW -->
+    <section id="calendarView">
+      <div class="topbar">
+        <span class="eyebrow">Daily Notes</span>
+        <div class="theme-picker" id="themePicker">
+          <button class="swatch" data-theme="paper" aria-label="Paper theme"></button>
+          <button class="swatch" data-theme="forest" aria-label="Forest theme"></button>
+          <button class="swatch" data-theme="midnight" aria-label="Midnight theme"></button>
+          <button class="swatch" data-theme="wine" aria-label="Wine theme"></button>
+          <button class="swatch" data-theme="aurora" aria-label="Aurora theme"></button>
+        </div>
+      </div>
+      <div class="cal-head">
+        <div class="cal-title-wrap">
+          <div class="cal-title" id="calTitle">August 2026</div>
+          <div class="cal-today" id="todayLabel"></div>
+        </div>
+        <div class="cal-nav">
+          <button class="nav-btn" id="prevMonth" aria-label="Previous month">‹</button>
+          <button class="nav-btn" id="nextMonth" aria-label="Next month">›</button>
+        </div>
+      </div>
+      <div class="grid-wrap">
+        <table class="calendar">
+          <thead>
+            <tr id="weekdayRow"></tr>
+          </thead>
+          <tbody id="calBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- NOTE VIEW -->
+    <section id="noteView" class="hidden">
+      <div class="note-head">
+        <button class="back-btn" id="backBtn">‹ calendar</button>
+        <div class="note-date" id="noteDate">Monday, August 17</div>
+      </div>
+
+      <div class="header-banner" id="headerBanner">
+        <div class="header-empty" id="headerEmpty">+ header photo</div>
+      </div>
+
+      <div class="editor-toolbar">
+        <div class="font-picker">
+          <span class="font-picker-label">Font</span>
+          <select class="font-select" id="fontSelect" aria-label="Choose font">
+            <option value="Fraunces" selected>Fraunces</option>
+            <option value="IBM Plex Mono">IBM Plex Mono</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Courier New">Courier New</option>
+          </select>
+        </div>
+        <button class="toolbar-btn" id="insertTableBtn">+ table</button>
+        <button class="toolbar-btn" id="insertImageBtn">+ image</button>
+        <button class="toolbar-btn" id="locationBtn">+ location</button>
+      </div>
+
+      <div class="page">
+        <div class="note-area" id="noteArea" contenteditable="true" data-placeholder="Write here…"></div>
+        <div class="note-meta" id="noteMeta">
+          <span class="location-prefix">Location:</span>
+          <input type="text" class="location-input" id="locationInputInline" placeholder="add location…" autocomplete="off">
+        </div>
+        <span class="save-indicator" id="saveIndicator">saved</span>
+      </div>
+    </section>
+
+    <!-- IMAGE EDITOR MODAL -->
+    <div class="modal-overlay hidden" id="imageEditorModal">
+      <div class="modal">
+        <div class="modal-head">
+          <span class="modal-title">Edit image</span>
+          <div class="modal-actions">
+            <button class="icon-btn" id="rotateLeftBtn" aria-label="Rotate left">-90°</button>
+            <button class="icon-btn" id="rotateRightBtn" aria-label="Rotate right">+90°</button>
+            <button class="icon-btn" id="applyEditBtn">apply</button>
+            <button class="icon-btn" id="cancelEditBtn">cancel</button>
+          </div>
+        </div>
+        <div class="canvas-wrap" id="canvasWrap">
+          <div class="img-container" id="imgContainer">
+            <img id="editImage" alt="" />
+            <div class="crop-overlay" id="cropOverlay">
+              <div class="crop-box" id="cropBox">
+                <div class="crop-handle nw" data-handle="nw"></div>
+                <div class="crop-handle ne" data-handle="ne"></div>
+                <div class="crop-handle sw" data-handle="sw"></div>
+                <div class="crop-handle se" data-handle="se"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-hint">drag on image to crop • use buttons to rotate</div>
+      </div>
+    </div>
+
+    <!-- TABLE CONFIG MODAL -->
+    <div class="modal-overlay hidden" id="tableModal">
+      <div class="modal modal-sm">
+        <div class="modal-head">
+          <span class="modal-title">Insert table</span>
+          <div class="modal-actions">
+            <button class="icon-btn" id="cancelTableBtn">cancel</button>
+            <button class="icon-btn" id="createTableBtn">create</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <label class="modal-label">Rows <input type="number" id="tableRows" value="3" min="1" max="50"></label>
+          <label class="modal-label">Columns <input type="number" id="tableCols" value="3" min="1" max="20"></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOCATION MODAL -->
+    <div class="modal-overlay hidden" id="locationModal">
+      <div class="modal modal-sm">
+        <div class="modal-head">
+          <span class="modal-title">Add location</span>
+          <div class="modal-actions">
+            <button class="icon-btn" id="cancelLocationBtn">cancel</button>
+            <button class="icon-btn" id="saveLocationBtn">save</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="location-field">
+            <span class="location-prefix">Location:</span>
+            <input type="text" id="locationInput" placeholder="e.g. Paris, France" autocomplete="off">
+          </div>
+          <button class="toolbar-btn" id="geoBtn" style="margin-top:8px;">use current location</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<input type="file" id="headerFileInput" accept="image/*" class="file-input-hidden" aria-label="Upload header image" />
+<input type="file" id="inlineFileInput" accept="image/*" class="file-input-hidden" aria-label="Upload inline image" />
+
+<script src="script.js"></script>
+
+</body>
+</html>
