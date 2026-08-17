@@ -41,4 +41,3 @@ DayFlow was built as a frontend web development project focused on creating a cl
 
 **Hasti Kabiri**
 
-Software Engineering Student | AI, Web & Mobile Development
