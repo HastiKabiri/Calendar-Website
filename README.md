@@ -37,7 +37,27 @@ Open the project locally or install the required dependencies if applicable.
 
 DayFlow was built as a frontend web development project focused on creating a clean, intuitive, and responsive calendar experience.
 
+
+<p align="center">
+  <img src=""D:\Personal\codes\VibeCoding- calendar website\Assets\Screenshot 2026-11-01 001601.png"" width="220" alt="Portfolio preview">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 👩🏻‍💻 Author
 
 **Hasti Kabiri**
+
+![]()
 
