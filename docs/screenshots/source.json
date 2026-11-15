@@ -1,0 +1,58 @@
+{
+  "capturedAt": "2026-11-15T15:47:43.708Z",
+  "source": "Unmodified local application; supplied deployment redirects to Vercel sign-in.",
+  "localOrigin": "http://127.0.0.1:8046/",
+  "deploymentUrl": "https://vibecoding-calendar-website-cgue4q819-hasti-intern.vercel.app/",
+  "deploymentCheck": {
+    "origin": "https://vercel.com",
+    "title": "Login – Vercel",
+    "hasCalendar": false
+  },
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "fonts": {
+    "fraunces": true,
+    "mono": true
+  },
+  "data": "Generic sample text and an editable table in a fresh disposable browser profile. No storage adapter injected; no existing user data, real location, or personal images used.",
+  "checks": {
+    "storageApiMissing": true,
+    "currentMonth": true,
+    "memoryNoteRecovery": true,
+    "noteMarkerWithoutProvider": 0,
+    "noteLostOnReload": true,
+    "mobileNoOverflow": true,
+    "runtimeErrors": [],
+    "storageWarnings": [
+      "Could not list saved notes",
+      "theme save failed",
+      "Save failed, kept in memory only"
+    ]
+  },
+  "files": [
+    {
+      "file": "dashboard.png",
+      "bytes": 59363
+    },
+    {
+      "file": "calendar.png",
+      "bytes": 49749
+    },
+    {
+      "file": "note-editor.png",
+      "bytes": 68618
+    },
+    {
+      "file": "mobile.png",
+      "bytes": 51044
+    }
+  ]
+}
